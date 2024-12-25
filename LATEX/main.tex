@@ -5,6 +5,8 @@
 \numberwithin{equation}{section}
 \usepackage[utf8]{inputenc}  % Codificación de caracteres
 \usepackage{graphicx}        % Incluir imágenes
+\usepackage{imakeidx}
+\makeindex[options=-c, intoc]
 
 
 \title{MÉTODOS DE DETERMINACIÓN DE ÓRBITAS A PARTIR DE OBSERVACIONES}   % Título del artículo
@@ -20,17 +22,60 @@
 %\includegraphics[width=1\textwidth]{portada.jpg}
 \newpage
 
+\tableofcontents
+
+\newpage
+
 \begin{abstract}
-    En este artículo se abordaran varios métodos para determinar 
+    En este artículo se abordarán varios métodos para determinar 
     las órbitas de cuerpos celestes a partir de obervaciones 
-proporcionadas por la NASA.
+    proporcionadas por la NASA.
 \end{abstract}
 \newpage
-\section{Introducción} %Motivacion del problema
+\section{Introducción} %Motivación del problema
+\index{Introducción}
+Hoy en día y desde hace ya un tiempo, cada día se descubren 
+varios exoplanetas cada uno con sus propias características. 
+Para terminar de caracterizarlos por completo, es necesario 
+hacer un estudio de cómo es su órbita. Esto es bastante 
+importante porque estudiando su órbita podemos estimar algunos 
+datos sobre ese exoplaneta que de otro modo sería imposible. 
+Un ejemplo sería ver si se encuentra en la zona habitable 
+o no de su estrella viendo qué tan grande es el periodo de su 
+órbita. \\
+
+Sin embargo, tomar una medida de su posición cada día sería 
+algo tremendamente ineficiente. Es por eso que antiguos 
+matemáticos y físicos desarrollaron algunos métodos para 
+determinar su órbita de manera preliminar a partir de, generalmente, 
+tres medidas. Algunos de estos métodos son el método de 
+Gauss o el método de Gibbs. \\
+
+Estos métodos han logrado varios hitos bastante importantes 
+en la historia de la mecánica celeste. Uno de estos logros 
+y quizás el más importante fue la determinación de la órbita 
+del planeta enano Ceres. Este palneta enano fue descubierto 
+el 1 de enero de 1801 por el astrónomo italiano Giuseppe Piazzi ($1746-1826$). 
+Sin embargo, debdio a su rápido movimiento, pronto le perdieron 
+de vista y ahí es cuando aparece el matemático Carl Friedrich Gauss ($1777-1855$) 
+que, con su método, calculó la órbita de Ceres a partir de 
+las pocas observaciones que había de él en la época y, gracias 
+a su alta precisión, pudieron volver a localizarle. \\
+
+Una vez motivado el esfuerzo de dedicarle un artículo a los 
+método de determinación de órbitas, vamos a comenzar desarrollando 
+el aspecto más teórico de los tres métodos en los que nos 
+vamos a centar: El método de Gauss, el método de Gibbs y 
+el método %El posible último método
 \section{Método 1}
+\index{Método 1}
 \section{Método 2}
+\index{Método 2}
 \section{Método 3} %Creo que vamos a hacer 3 métodos 
-\section{Resultados} %Aquí podríamos hablar de nuestros datos, el código y los propios resultados 
+\index{Método 3}
+\section{Resultados} %Aquí podríamos hablar de nuestros datos, el código y los propios resultados
+\index{Resultados} 
 \section{Conclusiones} %A lo mejor podemos anañizar los resultados aquí
+\index{Conclusiones}
 
 \end{document}

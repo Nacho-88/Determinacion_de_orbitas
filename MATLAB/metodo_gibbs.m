@@ -1,83 +1,80 @@
-function p = metodo_gibbs(T,e,a,mu,t_trans)
+function metodo_gibbs(r,long_helio,lat_helio,mu)
 
-UA_m=149597870700;
+r_1=r(1); %Observación 1 
 
-horas_seg=86400;
+r_2=r(2); %Observación 2
 
-p=zeros(1,3); %Semilatus rectum
+r_3=r(3); %Observación 3
 
-p(1)=a(1)*(1-e(1)^2); 
+lh_1=long_helio(1);
 
-p(2)=a(2)*(1-e(2)^2);
+lh_2=long_helio(2);
 
-p(3)=a(3)*(1-e(3)^2);
+lh_3=long_helio(3);
 
-theta=zeros(1,3); %Anomalía verdadera
+lah_1=lat_helio(1);
 
-M=zeros(1,3);
+lah_2=lat_helio(2);
 
-E0=0;
+lah_3=lat_helio(3);
 
-epsilon=1e-12;
+%Calculamos el vector posición.
+r1_vect=[r_1*cos(lah_1)*cos(lh_1) r_1*cos(lah_1)*sin(lh_1) r_1*sin(lah_1)];
 
-epsilon_2=epsilon;
+r2_vect=[r_2*cos(lah_2)*cos(lh_2) r_2*cos(lah_2)*sin(lh_2) r_2*sin(lah_2)];
 
-for i=1 : 3
+r3_vect=[r_3*cos(lah_3)*cos(lh_3) r_1*cos(lah_3)*sin(lh_3) r_1*sin(lah_3)];
 
-    t_T0=t_trans*horas_seg;
+c23=cross(r2_vect,r3_vect);
 
-    n=(2*pi)/T(i);
+a=dot(r1_vect,c23)/(r_1*norm(c23));
 
-    M(i)=n*t_T0;
+S=r1_vect.*(r_2-r_3)+r2_vect.*(r_3-r_1)+r3_vect.*(r_1-r_2);
 
-    func= @(E) M(i)-E+e(i)*sin(E);
+D=cross(r1_vect,r2_vect)+cross(r2_vect,r3_vect)+cross(r3_vect,r1_vect);
 
-    d_func= @(E) -1+e(i)*cos(E);
+N=r_1*cross(r2_vect,r3_vect)+r_2*cross(r3_vect,r1_vect)+r_3*cross(r1_vect,r2_vect);
 
-    [~,E]=metodo_newton(func,E0,epsilon,epsilon_2,d_func);
+v=zeros(3,3); %Vector de velocidades (km/s)
 
-    theta(i)=2*atan(sqrt((1+e(i))/(1-e(i)))*tan(E/2));
+v(1,:)=sqrt(mu/(norm(N)*norm(D)))*(cross(D,r1_vect)/r_1+S);
 
-end
+v(2,:)=sqrt(mu/(norm(N)*norm(D)))*(cross(D,r2_vect)/r_2+S);
 
-r=zeros(1,3); %Vector de posición (UA)
+v(3,:)=sqrt(mu/(norm(N)*norm(D)))*(cross(D,r3_vect)/r_3+S);
 
-r(1)=p(1)/(1+e(1)*cos(theta(1)));
+v_1=v(1,:); %Vectror velocidad para la observación 1 
 
-r(2)=p(2)/(1+e(2)*cos(theta(2)));
+v_2=v(2,:); %Vector de velocidad para la observación 2 
 
-r(3)=p(3)/(1+e(3)*cos(theta(3)));
+v_3=v(3,:); %Vector de velocidad para la observación 3
 
-r_m=zeros(1,3); %Vector posicion en metros
+fprintf('Seleccione qué vectores de posición y velocidad quiere usar para calcular los parámetros orbitales:\n')
+var=input('1 para observación 1. 2 para observación 2 y 3 para observación 3\n');
 
-r_m(1)=r(1)*UA_m;
+if var==1 || var==2 || var==3
 
-r_m(2)=r(2)*UA_m;
+    if var==1
 
-r_m(3)=r(3)*UA_m;
+    calc_elem_orb(r1_vect,v_1,mu)
 
-r_Sp=zeros(3,3); %Vector posición en el sistema perifocal
+    end
 
-r_Sp(1,:)= [r_m(1)*cos(theta(1)), r_m(1)*sin(theta(1)),0];
+    if var==2 
 
-r_Sp(2,:)= [r_m(2)*cos(theta(2)), r_m(2)*sin(theta(2)),0];
+        calc_elem_orb(r2_vect,v_2,mu)
 
-r_Sp(3,:)= [r_m(3)*cos(theta(3)), r_m(3)*sin(theta(3)),0];
+    end
 
-S=r_Sp(1,:).*(r(2)-r(3))+r_Sp(2,:).*(r(3)-r(1))+r_Sp(3,:).*(r(1)-r(2));
+    if var==3 
 
-D=cross(r_Sp(1,:),r_Sp(2,:))+cross(r_Sp(2,:),r_Sp(3,:))+cross(r_Sp(3,:),r_Sp(1,:));
+        calc_elem_orb(r3_vect,v_3,mu)
 
-N=norm(r_Sp(1,:))*cross(r_Sp(2,:),r_Sp(3,:))+norm(r_Sp(2,:))*cross(r_Sp(3,:),r_Sp(1,:))+norm(r_Sp(3,:))*cross(r_Sp(1,:),r_Sp(2,:));
+    end
 
-v=zeros(3,3); %Vector de velocidades
+else
 
-v(1,:)=sqrt(mu/(norm(N)*norm(D)))*(cross(D,r_Sp(1,:))/r_m(1)+S);
-
-v(2,:)=sqrt(mu/(norm(N)*norm(D)))*(cross(D,r_Sp(2,:))/r_m(2)+S);
-
-v(3,:)=sqrt(mu/(norm(N)*norm(D)))*(cross(D,r_Sp(3,:))/r_m(3)+S);
-
-p=[r_Sp; v];
-
+    fprintf('No ha seleccionado un número válido')
+    return;
+    
 end

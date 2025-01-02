@@ -1,5 +1,5 @@
 %-------------------------------------------------------------------------
-function [r, v, r_old, v_old] = metodo_gauss(Rho1, Rho2, Rho3, R1, R2, R3, t1, t2, t3)
+function [r, v, r_old, v_old] = metodo_gauss(Rho1, Rho2, Rho3, R1, R2, R3, t1, t2, t3,mu)
 
 % This function uses the Gauss method with iterative
 % improvement (Algorithms 5.5 and 5.6) to calculate the state
@@ -73,8 +73,6 @@ function [r, v, r_old, v_old] = metodo_gauss(Rho1, Rho2, Rho3, R1, R2, R3, t1, t
 
 %-------------------------------------------------------------------------
 
-global mu
-
 %Ecuaciones 4.7 , 4.8 y 4.9:
 tau1 = t1- t2;
 tau3 = t3- t2;
@@ -82,6 +80,7 @@ tau3 = t3- t2;
 tau = tau3- tau1;
 
 %Ecuaciones 4.10:
+
 p1 = cross(Rho2,Rho3);
 p2 = cross(Rho1,Rho3);
 p3 = cross(Rho1,Rho2);
@@ -111,26 +110,26 @@ c =-(mu*B)^2;
 Roots = roots([1 0 a 0 0 b 0 0 c]);
 
 %Encontramos la raiz positiva real
-x = posroot(Roots);
+raiz = posroot(Roots);
 
 %Ecuaciones 4.17
-f1 = 1- 1/2*mu*tau1^2/x^3;
-f3 = 1- 1/2*mu*tau3^2/x^3;
+f1 = 1- 1/2*mu*tau1^2/raiz^3;
+f3 = 1- 1/2*mu*tau3^2/raiz^3;
 
-g1 = tau1- 1/6*mu*(tau1/x)^3;
-g3 = tau3- 1/6*mu*(tau3/x)^3;
+g1 = tau1- 1/6*mu*(tau1/raiz)^3;
+g3 = tau3- 1/6*mu*(tau3/raiz)^3;
 
 %Ecuación 4.25
-rho2=A+mu*B/x^3;
+rho2=A+mu*B/raiz^3;
 
 %Ecuaciones 4.28 y 4.29
-rho1 =  1/Do*((6*(D(3,1)*tau1/tau3 + D(2,1)*tau/tau3)*x^3 ...
+rho1 =  1/Do*((6*(D(3,1)*tau1/tau3 + D(2,1)*tau/tau3)*raiz^3 ...
         + mu*D(3,1)*(tau^2- tau1^2)*tau1/tau3) ...
-        /(6*x^3 + mu*(tau^2- tau3^2))- D(1,1));
+        /(6*raiz^3 + mu*(tau^2- tau3^2))- D(1,1));
 
-rho3 =  1/Do*((6*(D(1,3)*tau3/tau1- D(2,3)*tau/tau1)*x^3 ...
+rho3 =  1/Do*((6*(D(1,3)*tau3/tau1- D(2,3)*tau/tau1)*raiz^3 ...
         + mu*D(1,3)*(tau^2- tau3^2)*tau3/tau1) ...
-        /(6*x^3 + mu*(tau^2- tau3^2))- D(3,3));
+        /(6*raiz^3 + mu*(tau^2- tau3^2))- D(3,3));
 
 %Ecuaciones 4.1, 4.2 y 4.3
 r1 = R1 + rho1*Rho1;
@@ -170,12 +169,12 @@ while ((diff1 > tol) && (diff2 > tol) && (diff3 > tol)) && (n < nmax)
     alpha = 2/ro- vo^2/mu;
 
     %Resolvemos  la ecuacion universal de kepler para los tiempos t1 y t3
-    x1 = kepler_U(tau1, ro, vro, alpha);
-    x3 = kepler_U(tau3, ro, vro, alpha);
+    x1 = kepler_U(tau1, ro, vro, alpha,mu);
+    x3 = kepler_U(tau3, ro, vro, alpha,mu);
 
     %Calculamos los coeficientes de Lagrange para los tiempos t1 y t3
-    [ff1, gg1] = f_and_g(x1, tau1, ro, alpha);
-    [ff3, gg3] = f_and_g(x3, tau3, ro, alpha);
+    [ff1, gg1] = f_and_g(x1, tau1, ro, alpha,mu);
+    [ff3, gg3] = f_and_g(x3, tau3, ro, alpha,mu);
 
     %Ahora vamos a actualizar los valores de f y g haciendo un promedio entre
     %los que teníamos y los que tenemos ahora.
@@ -214,11 +213,11 @@ while ((diff1 > tol) && (diff2 > tol) && (diff3 > tol)) && (n < nmax)
 end
 %Fin del bucle
 
-fprintf('\n( **Number of Gauss improvement iterations')
+fprintf('\n( **Numero de iteraciones del bucle de mejora')
 fprintf(' = %g)\n\n', n)
 
 if n >= nmax
-    fprintf('\n\n **Number of iterations exceeds %g \n\n ', nmax);
+    fprintf('\n\n **El número de iteraciones del bucle supera el límite de %g \n\n ', nmax);
 end
 
 %Por último devolvemos el vector de estados para la observación intermedia

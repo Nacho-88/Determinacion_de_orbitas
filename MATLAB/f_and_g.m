@@ -1,4 +1,4 @@
-function [f, g] = f_and_g(x, t, ro, a)
+function [f, g] = f_and_g(x, t, ro, a, mu)
 % This function calculates the Lagrange f and g coefficients.
 %
 % mu    - the gravitational parameter (km^3/s^2)
@@ -8,8 +8,6 @@ function [f, g] = f_and_g(x, t, ro, a)
 % x     - the universal anomaly after time t (km^0.5)
 % f     - the Lagrange f coefficient (dimensionless)
 % g     - the Lagrange g coefficient (s)
-
-global mu
 
 z = a*x^2;
 

@@ -1,4 +1,4 @@
-function x = kepler_U(dt, ro, vro, a)
+function x = kepler_U(dt, ro, vro, a, mu)
 
 % This function uses Newton’s method to solve the universal
 % Kepler equation for the universal anomaly.
@@ -14,8 +14,6 @@ function x = kepler_U(dt, ro, vro, a)
 % S        -value of Stumpff function S(z)
 % n        -number of iterations for convergence
 % nMax     - maximum allowable number of iterations
-
-global mu
 
 %tolerancia y limite de iteraciones
 error = 1.e-8;

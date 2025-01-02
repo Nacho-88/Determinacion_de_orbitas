@@ -11,9 +11,9 @@ function s = stumpS(z)
 % User M-functions required: none
 %-----------------------------------------------------------
 if z > 0
-    s = (sqrt(z)- sin(sqrt(z)))/(sqrt(z))ˆ3;
+    s = (sqrt(z)- sin(sqrt(z)))/(sqrt(z))^3;
 elseif z < 0
-    s = (sinh(sqrt(-z))- sqrt(-z))/(sqrt(-z))ˆ3;
+    s = (sinh(sqrt(-z))- sqrt(-z))/(sqrt(-z))^3;
 else
     s = 1/6;
 end

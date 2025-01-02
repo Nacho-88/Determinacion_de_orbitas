@@ -11,7 +11,7 @@ function x = posroot(Roots)
 %--------------------------------------------------------------------
 
 %...Construct the vector of positive real roots:
-posroots = Roots(find(Roots>0 & ˜imag(Roots)));
+posroots = Roots(find(Roots>0 & ~imag(Roots)));
 npositive = length(posroots);
 
 %...Exit if no positive roots exist:

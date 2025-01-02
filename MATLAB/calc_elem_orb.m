@@ -12,7 +12,7 @@ H=cross(R,V);
 
 h=norm(H);
 
-fprintf('El valor del momento angular específico es de %.2e km^2 kg/s\n',h)
+fprintf('\nEl valor del momento angular específico es de %.2e km^2 kg/s\n',h)
 
 i=acos(H(3)/h);
 
@@ -70,5 +70,25 @@ end
 
 fprintf('El valor de la anomalía verdadera es de %f º\n',theta*rad_grados)
 
+fprintf('Radio del periastro = %g km\n', h^2/mu/(1 + e))
+
+
+if e < 1
+
+    T = 2*pi/sqrt(mu)*a^1.5;
+    fprintf('Periodo:')
+    fprintf('\nSegundos = %g', T)
+    fprintf('\nMinutos = %g', T/60)
+    fprintf('\nHoras = %g', T/3600)
+    fprintf('\nDías = %g\n\n', T/24/3600)
+
 
 end
+
+
+end
+
+
+
+
+

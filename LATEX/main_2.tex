@@ -656,8 +656,120 @@ de la órbita de Mercurio de la literatura:
     $47,87$ & $2,71 \cdot 10^{9}$ & $7,005$ & $5,791\cdot 10^{7}$ & $0,2056$ & $87,97$ \\ \hline
     \end{tabular}
 \end{center}
+Teniendo en cuenta estos datos ya podemos comenzar con nuestro 
+análisis. 
+\subsubsection{Velocidad}
+Para comparar las velocidades, lo primero de todo vamos a 
+calcular el módulo de las 3 velocidades que hemos obtenido: 
+\begin{align*}
+    &v_{1}=52,82\, km/s \\
+    &v_{2}=50,51\, km/s  \\
+    &v_{3}=47,73\, km/s 
+\end{align*}
+Como podemos ver, según lo que nos indica la velocidad media 
+de la literatura, nuestros 3 valores entran dentro de lo esperado. 
+Para calcular el error cometido, ya que el dato que la literatura 
+nos proporciona es una velocidad media, vamos a calcular la 
+velocidad media de nuestras tres medidas y calcular el error 
+relativo. 
+\begin{equation*}
+    \overline{v}_{exp}=\frac{v_{1}+v_{2}+v_{3}}{3}=50,35  
+\end{equation*}
+El error cometido es de 
+\begin{equation*}
+    \epsilon=\frac{\left\lvert \overline{v}-\overline{v}_{exp} \right\rvert }{\overline{v}}=0,052=5,2\%
+\end{equation*}
+Como vemos, hemos cometido un error bastante pequeño y que entra 
+dentro de nuestros márgenes aceptables.
+\subsubsection{Momento angular específico}
+A partir de la determinación de este error, lo que vamos a 
+hacer va a ser comparar el error para cada medida obtenida. \\
 
+Comenzando con el valor obtenido de la primera posición tenemos 
+un error de 
+\begin{align*}
+    &\epsilon_{1}=\frac{\left\lvert h-h_{exp1} \right\rvert }{h}=0,033=3,3\% \\
+    &\epsilon_{2}=\frac{\left\lvert h-h_{exp2} \right\rvert }{h}=0,033=3,3\% \\
+    &\epsilon_{3}=\frac{\left\lvert h-h_{exp3} \right\rvert }{h}=0,047=4,8\% \\
+\end{align*}
+Todos los errores que hemos obtenido son inferiores al $5\%$ 
+validando una vez más el método de Gibbs. 
+\subsubsection{Inclinación}
+Para la inclinación hemos cometido un error de 
+\begin{align*}
+    &\epsilon_{1}=\frac{\left\lvert i-i_{exp1} \right\rvert }{i}=0,014=1,4\% \\
+    &\epsilon_{2}=\frac{\left\lvert i-i_{exp2} \right\rvert }{i}=0,036=2,6\% \\
+    &\epsilon_{3}=\frac{\left\lvert i-i_{exp3} \right\rvert }{i}=0,127=12,7\% \\
+\end{align*}
+En este caso, vemos que el error para el valor de $r_{3}$ empieza 
+a ser un poco elevado. La hipótesis principal que barajamos 
+sobre por qué sucede esto es que, al ser un valor de la inclinación 
+tan bajo, para obtener un error aceptable nuestras medidas deben 
+ser muy precisas y en el caso de la tercera, a pesar de cometer 
+un error absoluto de solo $0,9$ aporximadamente, parece no 
+ser lo suficientemente preciso.
+\subsubsection{Semieje mayor}
+Para el semieje mayor hemos cometido unos errores de 
+\begin{align*}
+    &\epsilon_{1}=\frac{\left\lvert a-a_{exp1} \right\rvert }{a}=0,081=8,1\% \\
+    &\epsilon_{2}=\frac{\left\lvert a-a_{exp2} \right\rvert }{a}=0,081=8,1\% \\
+    &\epsilon_{3}=\frac{\left\lvert a-a_{exp3} \right\rvert }{a}=0,107=10,7\% \\
+\end{align*}
+De nuevo, el error para $r_{3}$ es un poco alto y en este caso, 
+similar a lo que sucedía en el anterior, el error elevado que 
+obtenemos es debido a que los órdenes de magnitud tan grandes 
+que estamos manejando para el semieje que, de nuevo, nos 
+demandan más precisión.
+\subsubsection{Excentricidad}
+Los errores que obtenemos en la excentricidad son 
+\begin{align*}
+    &\epsilon_{1}=\frac{\left\lvert e-e_{exp1} \right\rvert }{e}=0,173=17,3\% \\
+    &\epsilon_{2}=\frac{\left\lvert a-a_{exp2} \right\rvert }{e}=0,173=17,3\% \\
+    &\epsilon_{3}=\frac{\left\lvert e-e_{exp3} \right\rvert }{e}=0,125=12,5\% \\
+\end{align*}
+En este caso, todos los errores cometidos son altos y la 
+razón es la misma que para la inclinación. La diferencia 
+tan grande de error entre las medidas de $r_{1}$ y $r_{2}$ 
+respecto a $r_{3}$ (de casi un $5\%$ de diferencia) nos da 
+indicios de que nuestras suposiciones de la razón de los 
+valores altos de error a pesar de que los datos obtenidos 
+son cercanos a los de la literatura es cierta.
+\subsubsection{Periodo}
+Para el periodo los errores son de:
+\begin{align*}
+    &\epsilon_{1}=\frac{\left\lvert T-T_{exp1} \right\rvert }{T}=0,121=12,1\% \\
+    &\epsilon_{2}=\frac{\left\lvert T-T_{exp2} \right\rvert }{T}=0,120=12,0\% \\
+    &\epsilon_{3}=\frac{\left\lvert T-T_{exp3} \right\rvert }{T}=0,157=15,7\% \\
+\end{align*}
+En este caso, hay una razón en específico que hace que los 
+errores en los periodos sean elevados. Esto es debido a que 
+la fórmula empleada para calcular el periodo es 
+\begin{equation*}
+    T=2\pi\sqrt{\frac{a^{3}}{\mu}}
+\end{equation*}
+Como vemos, para calcular el periodo se emplea el semieje mayor. 
+Como esta medida ya tiene un error asociado de por sí, el 
+periodo también va a tener un error propiciado por el 
+semieje y esto hace que el error cometido en el cálculo 
+se incremente significativamente. 
+\subsubsection{Conclusiones finales sobre el método de Gibbs}
+Tras analizar todos estos errores podemos concluir que el 
+método de Gibbs como una primera aproximación para determinar 
+la órbita de un cuerpo es ideal ya que para implementarlo 
+sólo necesitas 3 posiciones del cuerpo y, computacionalmente 
+hablando, es un código que no introduce mucha carga al 
+ordenador. En la Antigüedad seguramente 
+fue uno de los métodos más empleados ya que, con los 
+medios de la época, no se podía alcanzar mucha más 
+precisión que la que este método ofrece. \\
+Sin embargo, como también es evidente, este 
+método no es el más preciso y, en la actualidad, con todos 
+los medios de los que se dispone existen alternativas mejores 
+a este método. Aún así, creemos que este método para 
+comenzar a estudiar este tipo de cosas es bastante bueno 
+por su simplicidad y relativa buena precisión. 
 \subsection{Método de Gauss}
 \subsection{Comparación del método de Gibbs y el método de 
 Gauss}
+\section{Bibliografía}
 \end{document}

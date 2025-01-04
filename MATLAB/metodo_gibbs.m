@@ -45,9 +45,15 @@ v(3,:)=sqrt(mu/(norm(N)*norm(D)))*(cross(D,r3_vect)/r_3+S);
 
 v_1=v(1,:); %Vectror velocidad para la observación 1 
 
+fprintf('El vector velocidad en la posición 1 es: [%s] km/s\n', sprintf('%.2f, ', v_1(1:end)))
+
 v_2=v(2,:); %Vector de velocidad para la observación 2 
 
+fprintf('El vector velocidad en la posición 2 es: [%s] km/s\n', sprintf('%.2f, ', v_2(1:end)))
+
 v_3=v(3,:); %Vector de velocidad para la observación 3
+
+fprintf('El vector velocidad en la posición 3 es: [%s] km/s\n', sprintf('%.2f, ', v_3(1:end)))
 
 fprintf('Seleccione qué vectores de posición y velocidad quiere usar para calcular los parámetros orbitales:\n')
 var=input('1 para observación 1. 2 para observación 2 y 3 para observación 3\n');
@@ -74,7 +80,8 @@ if var==1 || var==2 || var==3
 
 else
 
-    fprintf('No ha seleccionado un número válido')
+    fprintf('No ha seleccionado un número válido\n')
+    
     return;
     
 end

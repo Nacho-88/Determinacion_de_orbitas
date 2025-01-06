@@ -1,3 +1,4 @@
 MÉTODOS DE GIBBS Y GAUSS PARA LA DETERMINACIÓN PRELIMINAR DE ÓRBITAS
 
-![image](https://github.com/user-attachments/assets/ecf7454d-b6c3-4b38-a1e1-c448cf1f2d25)
+
+![images](https://github.com/user-attachments/assets/092112cf-9b8a-4c97-ae3c-b7a22b54f2a0)

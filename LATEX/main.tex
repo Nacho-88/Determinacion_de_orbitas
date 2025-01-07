@@ -1,6 +1,8 @@
 \documentclass{article}
 
 % Paquetes para mejor apariencia y personalización
+\usepackage[spanish]{babel}
+\usepackage[backend=bibtex,style=authoryear]{biblatex}
 \usepackage{amsmath}
 \numberwithin{equation}{section}
 \usepackage[utf8]{inputenc}  % Codificación de caracteres
@@ -10,13 +12,18 @@
 %\usepackage{amsmath, amssymb, amsfonts}
 %\usepackage{hyperref}
 \makeindex[options=-c, intoc]
+\hyphenation{vec-to-ria-les}
+\hyphenation{e-xhaus-ti-va-men-te}
+\hyphenation{a-cep-ta-ble}
+
+\addbibresource{bibliografia.bib}
 
 \begin{document}
 
 % Generar la portada
 \begin{titlepage}
     \centering
-    {\Huge MÉTODOS DE DETERMINACIÓN DE ÓRBITAS A PARTIR DE OBSERVACIONES \\[1cm]}
+    {\Huge MÉTODOS PRELIMINARES DE DETERMINACIÓN DE ÓRBITAS A PARTIR DE OBSERVACIONES \\[1cm]}
     \vspace{1cm} % Espaciado opcional
     {\Large Víctor Ávila Camargo \\ 
     José Ignacio Miguel Rodríguez \\ 
@@ -32,21 +39,21 @@
 
 \newpage
 
-\begin{abstract}
+\begin{center}
+\textbf{Abstract}\\
     En este artículo se abordarán varios métodos para determinar 
-    las órbitas de cuerpos celestes a partir de observaciones 
-    proporcionadas por la NASA.
-\end{abstract}
+    los parámetros orbitales de la órbita de varios cuerpos celestes a partir de distintas observaciones.
+\end{center}
 \section{Introducción} %Motivación del problema
 \index{Introducción}
 Hoy en día y desde hace ya un tiempo, 
 varios exoplanetas son descubiertos a diario, cada uno con sus propias características. 
 Para terminar de caracterizarlos por completo, es necesario 
-hacer un estudio de cómo es su órbita. Esto es importante porque estudiando su órbita podemos recabar algunos 
+hacer un estudio de cómo es su órbita. Esto es importante porque estudiándola podemos recabar algunos 
 datos que de otro modo sería imposible. 
 Por ejemplo, podemos ver si el exoplaneta se encuentra en la zona habitable 
 de su estrella o no, viendo qué tan grande es el periodo de su 
-órbita. \\
+órbita. \\ 
 
 Sin embargo, tomar una medida de su posición cada día sería 
 algo tremendamente ineficiente. Es por eso que antiguos 
@@ -69,11 +76,11 @@ a su alta precisión, pudieron volver a localizarle. \\
 Una vez motivado el esfuerzo de dedicarle un artículo a los 
 método de determinación de órbitas, vamos a comenzar desarrollando 
 el aspecto más teórico de los dos métodos en los que nos 
-vamos a centrar: El método de Gauss y el método de Gibbs.
+vamos a centrar: El método de Gibbs y el método de Gauss.
 \section{Método de Gibbs}
 \index{Método de Gibbs}
 Para este método es necesario conocer la posición de un cuerpo 
-respecto a la Tierra en 3 instantes de tiempo distintos, 
+respecto al centro de atracción en 3 instantes de tiempo distintos, 
 $t_{1}$, $t_{2}$ y $t_{3}$. A partir de estas tres posiciones, 
 podremos obtener las velocidades $\overrightarrow{v_{1}}$, 
 $\overrightarrow{v_{2}}$ y $\overrightarrow{v_{3}}$ suponiendo 
@@ -114,7 +121,7 @@ de $\overrightarrow{r_{1}}$ y $\overrightarrow{r_{3}}$:
 Una vez tenemos estas consideraciones en mente ya podemos 
 empezar a calcular las distintas velocidades. \\
 
-Para calcular las velocidades vamos a partir de la siguiente 
+Para calcularlas vamos a partir de la siguiente 
 fórmula: 
 \begin{equation}
     \overrightarrow{v}\times \overrightarrow{h}=\mu\left(\frac{\overrightarrow{r}}{r}+\overrightarrow{e}\right) 
@@ -143,7 +150,7 @@ Y nuestra ecuación 2.2 queda de la siguiente manera:
 \begin{equation}
     \overrightarrow{v}=\frac{\mu}{h^{2}}\left(\frac{\overrightarrow{h}\times\overrightarrow{r}}{r}+\overrightarrow{h}\times\overrightarrow{e}\right)
 \end{equation}
-Cabe destacar que, en el sistema perifocal, el vector unidad 
+Cabe destacar que, en el sistema perifocal (sistema centrado en el foco de la elipse), el vector unidad 
 $\hat{p}$ tiene la misma dirección que el vector 
 de la excentricidad y el vector $\hat{w}$ es perpendicular 
 al plano de la órbita en la dirección de $\overrightarrow{h}$. Por 
@@ -209,9 +216,7 @@ es la misma ecuación), podemos despejar h y obtener:
 \end{equation}
 Como N y D dependen solo de los vectores de posición ya hemos 
 conseguido uno de nuestros objetivos, el de obtener h a partir 
-de los vectores de posición. Además, como todos los vectores son 
-coplanarios, todos sus productos vectoriales van a ser perpendiculares 
-al plano de la órbita pudiendo definir: 
+de los vectores de posición. Además, como todos los vectores son  coplanarios, todos sus productos vectoriales van a ser perpendiculares  al plano de la órbita, pudiendo definir: 
 \begin{equation}
     \hat{w}=\frac{\overrightarrow{D}}{D} 
 \end{equation}
@@ -258,10 +263,10 @@ método que será mostrado en secciones posteriores:
 \section{Método de Gauss}
 \index{Método de Gauss}
 
-El siguiente método para la determinación preliminar de órbitas es el método de Gauss. Al igual que en el de Gibbs, necesitamos tres observaciones en tres tiempos distintos para poder comenzar con el procedimiento, pero en esta ocasión necesitamos datos distintos.\par
+El siguiente método para la determinación preliminar de órbitas es el método de Gauss. Al igual que en el de Gibbs, necesitamos tres observaciones en tres tiempos distintos para poder comenzar con el procedimiento, pero en esta ocasión necesitamos datos distintos.\\
 
-El método de Gauss está basado en la determinación de órbitas a partir de \textbf{ángulos}. En el método anterior precisábamos de la posición y velocidad del cuerpo en tres momentos distintos, ahora partimos de dos ángulos en tres instantes de tiempo, estos son la ascensión recta $\alpha$ y la declinación $\delta$.\par
-
+El método de Gauss está basado en la determinación de órbitas a partir de \textbf{ángulos}. En el método anterior precisábamos de la posición del cuerpo en tres momentos distintos, ahora partimos de dos ángulos en tres instantes de tiempo, estos son la ascensión recta $\alpha$ y la declinación $\delta$.
+\newpage
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.55\textwidth]{ARyD.png}
@@ -272,7 +277,7 @@ Esto es especialmente útil cuando no tenemos información de nuestra distancia 
 
 \subsection{Desarrollo del método}
 
-Dado que la deducción matemática no es trivial y para ayudar a la comprensión del lector, explicaremos este método de una forma secuencial e iremos desarrollándolo a modo de algoritmo mientras exponemos las ecuaciones necesarias en cada etapa del mismo.\par
+Dado que la deducción matemática no es trivial y para ayudar a la comprensión del lector, explicaremos este método de una forma secuencial e iremos desarrollándolo a modo de algoritmo mientras exponemos las ecuaciones necesarias en cada etapa del mismo.\\
 
 Para comenzar con el método necesitamos partir de algunos datos. Estos son:
 
@@ -297,7 +302,7 @@ Antes de pasar a ver los pasos, vamos a plantear el problema para ver cómo lueg
     \overrightarrow{r_3} = \overrightarrow{R_3} + \varrho_3 \hat{\varrho_3}
 \end{align}
 
-Al ser ecuaciones vectoriales disponemos de nueve ecuaciones escalares y de 12 incógnitas (las tres componentes de cada vector de posición, más los tres módulos de las direcciones topocéntricas). Como vemos, necesitamos más ecuaciones para poder sacar una solución al sistema.\par
+Al ser ecuaciones vectoriales disponemos de nueve ecuaciones escalares y de 12 incógnitas (las tres componentes de cada vector de posición, más los tres módulos de las direcciones topocéntricas). Como vemos, necesitamos más ecuaciones para poder sacar una solución al sistema.\\
 
 Si seguimos buscando recursos, podemos echar mano de una de las asunciones que hacíamos en el método de Gibbs, en concreto, de que los tres vectores $\overrightarrow{r_i}$ deben pertenecer al mismo plano por la conservación del momento angular (podemos expresar uno de ellos en función de los otros dos). De esto sacamos:
 
@@ -305,7 +310,7 @@ Si seguimos buscando recursos, podemos echar mano de una de las asunciones que h
     \overrightarrow{r_2} = c_1\cdot\overrightarrow{r_1} + c_3\cdot\overrightarrow{r_3}
 \end{equation}
 
-Con esta nueva ecuación vectorial introducimos 2 nuevas incógnitas, los coeficientes $c_1$ y $c_3$. Si hacemos un recuento ahora tenemos 12 ecuaciones para 14 incógnitas. Cada vez estamos más cerca de poder resolver el sistema.\par
+Con esta nueva ecuación vectorial introducimos 2 nuevas incógnitas, los coeficientes $c_1$ y $c_3$. Si hacemos un recuento ahora tenemos 12 ecuaciones para 14 incógnitas. Cada vez estamos más cerca de poder resolver el sistema.\\
 
 Si continuamos buscando ecuaciones que nos ayuden, podemos aprovecharnos de otra consecuencia de la ecuación de movimiento del problema de los dos cuerpos, y es que el vector de estados (que contiene a $\overrightarrow{r}$ y $\overrightarrow{v}$) del cuerpo en órbita se puede expresar como el vector de estados en cualquier tiempo dado mediante los \textbf{coeficientes de Lagrange} de la siguiente forma:
 
@@ -314,9 +319,11 @@ Si continuamos buscando ecuaciones que nos ayuden, podemos aprovecharnos de otra
     \overrightarrow{r_3} = f_3\cdot\overrightarrow{r_2} + g_3\cdot\overrightarrow{v_2}
 \end{align}
 
-donde $f_i$ y $g_i$ son los coeficientes de Lagrange evaluados en el tiempo $t_i$. Además, si los intervalos de tiempo son lo suficientemente pequeños se puede comprobar que las funciones $f$ y $g$ dependen solo de la distancia al centro de atracción, en nuestro caso, trabajamos con $r_2$. Por tanto, estas dos ecuaciones vectoriales nos añaden 6 ecuaciones escalares y 4 incógnitas (las tres componentes de $\overrightarrow{v_2}$ y la magnitud $r_2$). Si sumamos esto al sistema que ya teníamos, obtenemos un total de 18 ecuaciones escalares para una suma de 18 incógnitas. Por fin el problema está bien preparado para proponer una solución. Antes de empezar, mantengamos en mente que el objetivo será obtener el vector de estados en el instante de tiempo intermedio $t_2$, es decir, $\overrightarrow{r_2}$ y $\overrightarrow{v_2}$, pues con esto determinado podremos obtener los elementos orbitales de la trayectoria de nuestro cuerpo.\\
+donde $f_i$ y $g_i$ son los coeficientes de Lagrange evaluados en el tiempo $t_i$.\\
 
-Visto todo esto, procedamos con los pasos para conseguir nuestro objetivo:\\
+Además, si los intervalos de tiempo son lo suficientemente pequeños se puede comprobar que las funciones $f$ y $g$ dependen solo de la distancia al centro de atracción, en nuestro caso, trabajamos con $r_2$. Por tanto, estas dos ecuaciones vectoriales nos añaden 6 ecuaciones escalares y 4 incógnitas (las tres componentes de $\overrightarrow{v_2}$ y la magnitud $r_2$). Si sumamos esto al sistema que ya teníamos, obtenemos un total de 18 ecuaciones escalares para una suma de 18 incógnitas. Por fin el problema está bien preparado para proponer una solución.\\
+
+Antes de empezar, mantengamos en mente que el objetivo será obtener el vector de estados en el instante de tiempo intermedio $t_2$, es decir, $\overrightarrow{r_2}$ y $\overrightarrow{v_2}$, pues con esto determinado podremos obtener los elementos orbitales de la trayectoria de nuestro cuerpo. Visto todo esto, procedamos con los pasos para conseguir nuestro objetivo:\\
 
 \noindent\textbf{1. Obtener intervalos de tiempo}
 
@@ -330,10 +337,10 @@ Primero definimos los intervalos de tiempo $\tau_1$, $\tau_3$ y $\tau$ de la sig
 
 Estos son los intervalos de tiempo entre las observaciones y el intervalo de tiempo total. Como explicamos antes, si los intervalos son suficientemente cortos, podremos aprovechar las propiedades de los coeficientes de Lagrange.\\
 
+\newpage
 \noindent\textbf{2. Obtener productos vectoriales $p_i$}
 
 Para poder resolver el sistema de ecuaciones necesitaremos calcular los siguientes productos vectoriales para posteriormente simplificar los productos escalares triples.
-
 \begin{align}
     \overrightarrow{p_1}=\hat{\varrho_2}\times\hat{\varrho_3} \hspace{1.5cm} & \overrightarrow{p_2}=\hat{\varrho_1}\times\hat{\varrho_3} \hspace{1cm} & \overrightarrow{p_3}=\hat{\varrho_1}\times\hat{\varrho_3}
 \end{align}
@@ -358,9 +365,9 @@ Estas magnitudes son necesarias ya que en el desarrollo del sistema, nos vamos a
 
 \noindent\textbf{4. Obtener expresiones para las longitudes $\varrho_i$}
 
-Este paso precisa de haber hecho un desarrollo de nuestras ecuaciones del sistema empleando cálculo vectorial. Para evitar atascarnos despejando ecuaciones, vamos a mostrar el procedimiento y sus resultados, dejando como tarea pendiente demostrar las ecuaciones que vamos a presentar.\par
+Este paso precisa de haber hecho un desarrollo de nuestras ecuaciones del sistema empleando cálculo vectorial. Para evitar atascarnos despejando ecuaciones, vamos a mostrar el procedimiento y sus resultados, dejando como tarea pendiente demostrar las ecuaciones que vamos a presentar.\\
 
-Partiremos de la ecuación 5.4 resolviendo para $c_1$ y $c_3$:
+Partiremos de la ecuación 3.4 resolviendo para $c_1$ y $c_3$:
 
 \begin{equation}
     c_1 = \frac{(\overrightarrow{r_2} \times \overrightarrow{r_3}) \cdot (\overrightarrow{r_1} \times \overrightarrow{r_3})}{\|\overrightarrow{r_1} \times \overrightarrow{r_3}\|^2}
@@ -370,8 +377,7 @@ Partiremos de la ecuación 5.4 resolviendo para $c_1$ y $c_3$:
     c_3 = \frac{(\overrightarrow{r_2} \times \overrightarrow{r_1}) \cdot (\overrightarrow{r_3} \times \overrightarrow{r_1})}{\|\overrightarrow{r_1} \times \overrightarrow{r_3}\|^2}
 \end{equation}
 
-Si ahora utilizamos las ecuaciones 5.5 y 5.6, que expresan $\overrightarrow{r_1}$ y $\overrightarrow{r_3}$ en función de los coeficientes de Lagrange, entonces podemos sustituir en estas ecuaciones para $c_1$ y $c_3$, obteniendo:
-
+Si ahora utilizamos las ecuaciones 3.5 y 3.6, que expresan $\overrightarrow{r_1}$ y $\overrightarrow{r_3}$ en función de los coeficientes de Lagrange, entonces podemos sustituir en estas ecuaciones para $c_1$ y $c_3$, obteniendo:
 \begin{equation}
 c_1 = \frac{g_3}{f_{1}g_3 - f_{3}g_1}
 \end{equation}
@@ -380,7 +386,9 @@ c_1 = \frac{g_3}{f_{1}g_3 - f_{3}g_1}
 c_3 = -\frac{g_1}{f_{1}g_3 - f_{3}g_1}
 \end{equation}
 
-Hemos conseguido expresarlos solo en función de estos coeficientes de Lagrange que podemos calcular ahora. Como hemos asumido que nuestros intervalos de tiempos son lo suficientemente cortos, entonces las expresiones para $f_i$ y $g_i$ toman la siguiente forma:
+Hemos conseguido expresarlos solo en función de estos coeficientes de Lagrange que podemos calcular ahora. 
+\newpage
+Como hemos asumido que nuestros intervalos de tiempos son lo suficientemente cortos, entonces las expresiones para $f_i$ y $g_i$ toman la siguiente forma:
 
 \begin{equation}
 \begin{array}{cc}
@@ -389,7 +397,7 @@ f_3 \approx 1 - \frac{1}{2} \frac{\mu}{r_2^3} \tau_3^2 & g_3 \approx \tau_3 - \f
 \end{array}
 \end{equation}
 
-Donde recordamos $\mu$ es el parámetro gravitacional. Estas ecuaciones nos permiten ahora conocer el denominador de las ecuaciones 5.15 y 5.16 para continuar con la manipulación de esas expresiones. Esto es:
+Donde recordamos $\mu$ es el parámetro gravitacional. Estas ecuaciones nos permiten ahora conocer el denominador de las ecuaciones 3.15 y 3.16 para continuar con la manipulación de esas expresiones. Esto es:
 
 \begin{align}
     f_{13} - f_{31} &= \left( 1 - \frac{1}{2} \frac{\mu}{r_2^3} \tau_1^2 \right) 
@@ -399,7 +407,7 @@ Donde recordamos $\mu$ es el parámetro gravitacional. Estas ecuaciones nos perm
     &\approx \tau - \frac{1}{6} \frac{\mu}{r_2^3} \tau^3
 \end{align}
 
-donde lo que hacemos en la última aproximación es quedarnos con los términos significativos. Si ahora introducimos este resultado en la ecuación 5.15 obtenemos:
+donde lo que hacemos en la última aproximación es quedarnos con los términos más significativos. Si ahora introducimos este resultado en la ecuación 3.15 obtenemos:
 
 \begin{equation}
     c_1 \approx \frac{\tau_3 - \frac{1}{6} \frac{\mu}{r_2^3} \tau_3^3}{\tau - \frac{1}{6} \frac{\mu}{r_2^3} \tau^3} 
@@ -418,11 +426,11 @@ Haciendo lo propio para el otro coeficiente:
 c_3 \approx -\frac{\tau_1}{\tau} \left[ 1 + \frac{1}{6} \frac{\mu}{r_2^3} (\tau^2 - \tau_1^2) \right]
 \end{equation}
 
-Hemos logrado expresar estos valores en términos de los intervalos temporales y de la distancia desconocida $r_2$ al centro de atracción, lo que nos permite ahora buscar expresiones para $\varrho_1$, $\varrho_2$ y $\varrho_3$ en función de los coeficientes $c_1$ y $c_2$.\par
+Hemos logrado expresar estos valores en términos de los intervalos temporales y de la distancia desconocida $r_2$ al centro de atracción, lo que nos permite ahora buscar expresiones para $\varrho_1$, $\varrho_2$ y $\varrho_3$ en función de los coeficientes $c_1$ y $c_2$.\\
 
-Para realizar esto, vamos a sustituir las ecuaciones 5.1, 5.2 y 5.3 en la ecuación 5.4 para conseguir una ecuación de donde poder despejar cada $\varrho$. Vamos a tener una sola ecuación para las tres, pero podemos manipularla de forma ingeniosa para quedarnos solo con una de ellas a la vez. Esto lo haremos multiplicando la ecuación por el producto vectorial adecuado. Tras estudiar exhaustivamente cada caso, nos vamos a dar cuenta de que los cálculos resultantes estarán escritos en función de las magnitudes y productos que ya tenemos calculados de apartados anteriores, esto es, todas las $D$'s del paso 3.\\
+Para realizar esto, vamos a sustituir las ecuaciones 3.1, 3.2 y 3.3 en la ecuación 3.4 para conseguir una ecuación de donde poder despejar cada $\varrho$. Vamos a tener una sola ecuación para las tres, pero podemos manipularla de forma ingeniosa para quedarnos solo con una de ellas a la vez. Esto lo haremos multiplicando la ecuación por el producto vectorial adecuado. Tras estudiar exhaustivamente cada caso, nos vamos a dar cuenta de que los cálculos resultantes estarán escritos en función de las magnitudes y productos que ya tenemos calculados de apartados anteriores, esto es, todas las $D$'s del paso 3.\\
 
-Como hemos dicho, si resolvemos para cada distancia $\varrho$ y asumimos que $D_0\neq0$ (lo que implica que $\hat{\varrho_1}$, $\hat{\varrho_2}$ y $\hat{\varrho_3}$ no están en el mismo plano), las expresiones que nos quedan son las siguientes:
+Como hemos dicho, si resolvemos para cada distancia $\varrho$ y asumimos que $\mbox{$D_0 \neq 0$}$ (lo que implica que $\hat{\varrho_1}$, $\hat{\varrho_2}$ y $\hat{\varrho_3}$ no están en el mismo plano), las expresiones que nos quedan son las siguientes:
 
 \begin{equation}
 \varrho_1 = \frac{1}{D_0} \left( -D_{11} + \frac{1}{c_1} D_{21} - \frac{c_3}{c_1} D_{31} \right)
@@ -436,14 +444,13 @@ Como hemos dicho, si resolvemos para cada distancia $\varrho$ y asumimos que $D_
 \varrho_3 = \frac{1}{D_0} \left( -\frac{c_1}{c_3} D_{13} + \frac{1}{c_3} D_{23} - D_{33} \right)
 \end{equation}
 
-Si ahora sustituimos las expresiones que habíamos encontrado para $c_1$ y $c_2$ (ecuaciones 5.20 y 5.21) en estas, obtenemos nuestros resultados finales para este paso:
+Si ahora sustituimos las expresiones que habíamos encontrado para $c_1$ y $c_2$ (ecuaciones 3.20 y 3.21) en estas, obtenemos nuestros resultados finales para este paso:
 
 \begin{equation}
     \varrho_2 = A + \frac{\mu B}{r_2^3}
 \end{equation}
 
 donde:
-
 \begin{equation}
 A = \frac{1}{D_0} \left( -D_{12} \frac{\tau_3}{\tau} + D_{22} + D_{32} \frac{\tau_1}{\tau} \right)
 \end{equation}
@@ -453,7 +460,6 @@ B = \frac{1}{6D_0} \left[ D_{12} (\tau_3^2 - \tau^2) \frac{\tau_3}{\tau} + D_{32
 \end{equation}
 
 y las otras dos distancias:
-
 \begin{equation}
 \varrho_1 = \frac{1}{D_0} \left[ \frac{6 \left( D_{31} \frac{\tau_1}{\tau_3} + D_{21} - \frac{\tau}{\tau_3} \right) r_2^3 + \mu D_{31} (\tau^2 - \tau_1^2) \frac{\tau_1}{\tau_3}}{6r_2^3 + \mu (\tau^2 - \tau_3^2)} - D_{11} \right]
 \end{equation}
@@ -462,17 +468,17 @@ y las otras dos distancias:
 \varrho_3 = \frac{1}{D_0} \left[ \frac{6 \left( D_{13} \frac{\tau_3}{\tau_1} - D_{23} - \frac{\tau}{\tau_1} \right) r_2^3 + \mu D_{13} (\tau^2 - \tau_3^2) \frac{\tau_3}{\tau_1}}{6r_2^3 + \mu (\tau^2 - \tau_3^2)} - D_{33} \right]
 \end{equation}
 
-La ecuación 5.25 establece una relación entre la distancia topocéntrica entre el cuerpo y el observador $\varrho_2$ y la distancia geocéntrica al centro de atracción $r_2$. Esto, si pensamos en el objetivo final, es muy potente pues con determinar un valor válido de $r_2$, podremos sustituir en estas ecuaciones y con los rangos $\varrho_i$ calculados podremos sustituir en las ecuaciones 5.1, 5.2 y 5.3 para obtener las posiciones del cuerpo en los instantes de tiempo correspondientes.\\
-
+La ecuación 3.25 establece una relación entre la distancia topocéntrica entre el cuerpo y el observador $\varrho_2$ y la distancia geocéntrica al centro de atracción $r_2$. Esto, si pensamos en el objetivo final, es muy potente pues con determinar un valor válido de $r_2$, podremos sustituir en estas ecuaciones y con los rangos $\varrho_i$ calculados podremos sustituir en las ecuaciones 3.1, 3.2 y 3.3 para obtener las posiciones del cuerpo en los instantes de tiempo correspondientes.
+\newpage
 \noindent\textbf{5. Obtener valor de $r_2$ y de $\overrightarrow{r_2}$}
 
-Como acabamos de explicar, vamos a buscar este valor para poder cerrar el proceso de búsqueda de los vectores de posición. Por tanto, vamos a coger la ecuación 5.2 y vamos a multiplicar sus términos por $\overrightarrow{r_2}$ para obtener lo siguiente:
+Como acabamos de explicar, vamos a buscar este valor para poder cerrar el proceso de búsqueda de los vectores de posición. Por tanto, vamos a coger la ecuación 3.2 y vamos a multiplicar sus términos por $\overrightarrow{r_2}$ para obtener lo siguiente:
 
 \begin{equation}
 r_2^2 = \varrho_2^2 + 2E \varrho_2 + R_2^2
 \end{equation}
 
-donde $E=\overrightarrow{R_{2}}\cdot\hat{\varrho_{2}}$. Si ahora cogemos y sustituimos la ecuación 5.25 en esta última, obtenemos: 
+donde $E=\overrightarrow{R_{2}}\cdot\hat{\varrho_{2}}$. Si ahora cogemos y sustituimos la ecuación 3.25 en esta última, obtenemos: 
 
 \begin{equation}
     r_2^2 = \left( A + \frac{\mu B}{r_2^3} \right)^2 + 2E \left( A + \frac{\mu B}{r_2^3} \right) + R_2^2
@@ -490,17 +496,17 @@ donde los valores de los coeficientes son:
     a = -(A^2 + 2AE + R_2^2) \quad b = -2\mu B(A + E) \quad c = -\mu^2 B^2
 \end{equation*}
 
-Podemos obtener numéricamente las raíces de este polinomio y por tanto encontrar un valor adecuado para $r_2$. Una vez encontrado, podemos sustituirlo en la ecuación 5.25 para hallar el valor de $\varrho_2$ e introducir este último en la ecuación 5.2 para hallar finalmente el vector de posición en el tiempo intermedio, $\overrightarrow{r_2}$. Acabamos de lograr la primera parte de nuestro objetivo.\\
+Podemos obtener numéricamente las raíces de este polinomio y por tanto encontrar un valor adecuado para $r_2$. Una vez encontrado, podemos sustituirlo en la ecuación 3.25 para hallar el valor de $\varrho_2$ e introducir este último en la ecuación 3.2 para hallar finalmente el vector de posición en el tiempo intermedio, $\overrightarrow{r_2}$. Acabamos de lograr la primera parte de nuestro objetivo.\\
 
 \noindent\textbf{6. Obtener valor de $\overrightarrow{v_2}$}
 
-Para terminar, primero recordamos que a pesar de que estemos resolviendo para $\overrightarrow{r_2}$, los valores $\overrightarrow{r_1}$ y $\overrightarrow{r_3}$ también son calculables en este punto y, de hecho, los necesitamos para poder concluir en este paso. Vamos a partir de la ecuación 5.5, de la cual vamos a despejar $\overrightarrow{r_2}$:
+Para terminar, primero recordamos que a pesar de que estemos resolviendo para $\overrightarrow{r_2}$, los valores $\overrightarrow{r_1}$ y $\overrightarrow{r_3}$ también son calculables en este punto y, de hecho, los necesitamos para poder concluir en este paso. Vamos a partir de la ecuación 3.5, de la cual vamos a despejar $\overrightarrow{r_2}$:
 
 \begin{equation}
     \overrightarrow{r_2} = \frac{1}{f_1} \overrightarrow{r_1} - \frac{g_1}{f_1} \overrightarrow{v_2} 
 \end{equation}
 
-Vemos que aparecen los coeficientes de Lagrange que teníamos anteriormente. La diferencia es que ahora podemos calcularlos analíticamente pues ya disponemos del valor de $r_2$. Si ahora sustituimos esta ecuación para $\overrightarrow{r_2}$ en la ecuación 5.6:
+Vemos que aparecen los coeficientes de Lagrange que teníamos anteriormente. La diferencia es que ahora podemos calcularlos analíticamente pues ya disponemos del valor de $r_2$. Si ahora sustituimos esta ecuación para $\overrightarrow{r_2}$ en la ecuación 3.6:
 
 \begin{equation}
     \overrightarrow{r_3} = \frac{f_3}{f_1} \overrightarrow{r_1} + \left( \frac{f_1 g_3 - f_3 g_1}{f_1} \right) \overrightarrow{v_2}
@@ -516,7 +522,7 @@ Con esto acabamos de completar nuestro objetivo, hemos obtenido el vector $\over
 
 \noindent\textbf{7. Iterar y corregir}
 
-El método de Gauss no termina ahí. Los valores $\overrightarrow{v_2}$ y $\overrightarrow{r_2}$ son valores aproximados que hay que iterar hasta que consigan el nivel de tolerancia o convergencia requerido por el usuario. Con un algoritmo complementario al que se sigue para llegar hasta aquí, se pueden estos valores que comentamos para calcular con mayor precisión los coeficientes de Lagrange (intentamos conseguir sus valores "exactos"), y con ellos volver a calcular todos los parámetros que habíamos implementado. Habrá parámetros como las distancias $\varrho_i$ que no cambien una vez hecha esta primera mejora, pero el valor del vector de estados será más preciso. Con este nuevo valor se pueden volver a calcular las funciones $f$ y $g$ (Lagrange) y repetir todo este proceso para obtener un $\overrightarrow{v_2}$ y $\overrightarrow{r_2}$ más exactos aún. La precisión con la que se detendrá el cálculo es decisión de la persona que lo implemente.\\
+El método de Gauss no termina ahí. Los valores $\overrightarrow{v_2}$ y $\overrightarrow{r_2}$ son valores aproximados que hay que iterar hasta que consigan el nivel de tolerancia o convergencia requerido por el usuario. Con un algoritmo complementario al que se sigue para llegar hasta aquí, se pueden perfeccionar estos valores que comentamos para calcular con mayor precisión los coeficientes de Lagrange (intentamos conseguir sus valores "exactos"), y con ellos volver a calcular todos los parámetros que habíamos implementado. Habrá parámetros como las distancias $\varrho_i$ que no cambien una vez hecha esta primera mejora, pero el valor del vector de estados será más preciso. Con este nuevo valor se pueden volver a calcular las funciones $f$ y $g$ (Lagrange) y repetir todo este proceso para obtener un $\overrightarrow{v_2}$ y $\overrightarrow{r_2}$ más exactos aún. La precisión con la que se detendrá el cálculo es decisión de la persona que lo implemente.\\
 
 Vemos que el hecho de que el método de Gauss sea un proceso iterativo proporciona muchísima más precisión y por tanto que sea uno de los más elegidos en la determinación preliminar de órbitas en las que se quiere mantener una buena fiabilidad.
 \section{Resultados} 
@@ -621,7 +627,7 @@ Para verificar el funcionamiento de este método y su versatilidad, vamos a estu
 
 En este primer apartado vamos a presentar los resultados obtenidos para la órbita del satélite Meteosat-10 (MSG3). Para empezar, como explicamos en el desarrollo del método, necesitamos tres observaciones del cuerpo en las que tomemos datos de la ascensión recta y de la declinación. Además, adicionalmente y para poder hacer el cálculo vectorial correcto, precisamos de la latitud del puesto de observación y del tiempo local sidéreo. Estos dos ángulos son necesarios para ubicarnos correctamente sobre la superficie terrestre y para proporcionarle los vectores correctos a la entrada de nuestro método.\\
 
-Hemos decidido recoger nuestros datos iniciales de la misma página que presentamos anteriormente. Recordamos que en este método se obtiene un único vector de estados correspondiente a la observación intermedia. Con todo esto, los resultados obtenidos han sido:
+Los datos iniciales han sido recogidos de la misma fuente que para el método anterior. Recordamos que en este método se obtiene un único vector de estados correspondiente a la observación intermedia. Con todo esto, los resultados obtenidos han sido:
 
 \begin{center}
     \centering
@@ -640,6 +646,7 @@ Hemos decidido recoger nuestros datos iniciales de la misma página que presenta
     $2.71$ & $61.47$ & $ 0.048$ & $281.90$ & $4.83\cdot 10^{4}$ & $20.39$ & $4.59\cdot 10^{4}$ & $1.22$ \\ \hline
     \end{tabular}
 \end{center}
+
 
 \noindent\textbf{Segundo caso: Mercurio.}
 
@@ -724,7 +731,7 @@ Procedemos de manera análoga para esta magnitud:
     \epsilon=\frac{\left\lvert a-a_{exp} \right\rvert}{a}=0.1472=14.72\%
 \end{equation*}
 
-De nuevo, una discrepancia significativa en nuestros resultados. Las causas 
+De nuevo, una discrepancia significativa en nuestros resultados.
 
 \subsubsection{Excentricidad}
 Procedemos de manera análoga para esta magnitud:
@@ -733,7 +740,15 @@ Procedemos de manera análoga para esta magnitud:
     \epsilon=\frac{\left\lvert e-e_{exp} \right\rvert}{e}=341.85\approx30000\%
 \end{equation*}
 
-Aquí nos encontramos con un error enorme en la predicción de la órbita. Aún así, no debemos dejarnos llevar por la magnitud del error, ya que vamos a intentar buscar una explicación para el mismo. La principal razón es la excentricidad tan baja que tiene este satélite. Un valor tan próximo a cero hace que las predicciones numéricas se vuelvan complicadas y hace que cualquier pequeña desviación se represente como un error relativo elevado. Por tanto, dejamos este valor para poder concluir en el último apartado la eficacia del método y la complejidad de verificar su implementación.
+Aquí nos encontramos con un error enorme en la predicción de la órbita. Aún así, no debemos dejarnos llevar por la magnitud del error, ya que vamos a intentar buscar una explicación para el mismo. La principal razón es la excentricidad tan baja que tiene este satélite. Un valor tan próximo a cero hace que las predicciones numéricas se vuelvan complicadas y hace que cualquier pequeña desviación se represente como un error relativo elevado.\\
+
+Con esto, creemos que el error relativo no es una buena manera de medir nuestras discrepancias en este caso. Nuestro resultado, que recordamos es $e=0.048$, sigue siendo lo suficientemente bajo como para interpretar que la órbita es cercana a una circunferencia. Con esto, podemos representar dos órbitas genéricas con los dos valores de excentricidad para comprobar que, como decimos, la diferencia no es tan exagerada como muestra este error.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth]{exce.png}
+    \caption{Comparación excentricidades en órbitas casi circulares.}
+\end{figure}
 
 \subsubsection{Periodo}
 Procedemos de manera análoga para esta magnitud:
@@ -852,7 +867,11 @@ Si procedemos para el método de Gauss:
     \epsilon=\frac{\left\lvert i-i_{exp} \right\rvert}{i}=3.06\approx300\%
 \end{equation*}
 
-Como podemos apreciar, esta vez es el valor de la inclinación el que se nos dispara a pesar de que el resto de elementos orbitales encajen con la órbita de Mercurio. Aún así, aunque la discrepancia es grande, el valor del error no se ve tan incrementado como en el caso de la excentricidad del escenario anterior.
+Como podemos apreciar, esta vez es el valor de la inclinación el que se nos dispara a pesar de que el resto de elementos orbitales encajen con la órbita de Mercurio. Aún así, aunque la discrepancia es grande, el valor del error no se ve tan incrementado como en el caso de la excentricidad del escenario anterior.\\
+
+Queremos destacar en este punto la premisa de que estos son métodos preliminares. Tanto el método de Gibbs como el de Gauss descritos trabajan con la dinámica de dos cuerpos. Un valor de inclinación tan dispar del valor real nos podría llevar a concluir que hemos determinado la órbita de otro cuerpo. Sin embargo, en la realidad te enfrentas a estas incertidumbres con métodos que tienen en cuenta sistemas dinámicos más complejos, así como de tres o más cuerpos.\\
+
+Si la órbita de Mercurio no fuera conocida y esta fuera la primera vez que se estudia, con total seguridad verificar los resultados con otros métodos nos llevaría a la conclusión de que este valor para la inclinación es imposible. En resumen, la obtención de valores erróneos en métodos preliminares no es improbable, y validación de resultados requiere de métodos más sofisticados que respalden o contradigan tus hipótesis obtenidas por los primeros.\\
 
 \subsubsection{Semieje mayor}
 \noindent\textbf{Método de Gibbs}\par
@@ -862,8 +881,7 @@ Para el semieje mayor hemos cometido unos errores de
     &\epsilon_{2}=\frac{\left\lvert a-a_{exp2} \right\rvert }{a}=0,081=8,1\% \\
     &\epsilon_{3}=\frac{\left\lvert a-a_{exp3} \right\rvert }{a}=0,107=10,7\% \\
 \end{align*}
-De nuevo, el error para $r_{3}$ es un poco alto y en este caso, 
-similar a lo que sucedía en el anterior, el error elevado que 
+De nuevo, el error para $r_{3}$ es un poco alto y en este caso, similar a lo que sucedía en el anterior, el error elevado que 
 obtenemos es debido a que los órdenes de magnitud tan grandes 
 que estamos manejando para el semieje que, de nuevo, nos 
 demandan más precisión.\\
@@ -928,7 +946,6 @@ se incremente significativamente.\\
 
 En este método obtenemos una mejor aproximación para el valor del periodo.
 
-
 \subsubsection{Radio del periastro}
 \noindent\textbf{Método de Gibbs}\par
 Los errores que obtenemos en la excentricidad son 
@@ -973,6 +990,7 @@ Aún así, el procedimiento (tanto matemático como a la hora de llevar a cabo e
 
 Afortunadamente hemos contado con el apoyo del software de JPL que se ha mencionado en el guión, pues sin él muchas magnitudes habrían sido imposibles de conseguir. Recabar datos tan exactos para estos métodos así como fecha y lugar de observaciones tampoco es tarea mundana.\\
 
+\newpage
 En el desarrollo de este trabajo han existido complicaciones como las que mencionamos, así como resultados de los cuales no estamos del todo conformes como aquellos errores que superan el criterio que nosotros tenemos como aceptable. Sin embargo, son métodos para una determinación preliminar de la órbita, por lo que invirtiendo el tiempo suficiente en ellos son métodos con muchísimo potencial si queremos estudiar la dinámica de los cuerpos de nuestro universo. Por tanto, sí que estamos satisfechos con habernos adaptado a dichas dificultades y haber sacado una lección o conclusión válida de todas ellas.\\ 
 
 Con todo esto, dejar constancia de nuestros elogios para todos aquellos astrónomos de épocas pasadas que han sido capaces de ubicarnos en el universo sin disponer de los medios a los que nosotros, a la fecha del trabajo, tenemos acceso diario.
@@ -981,12 +999,13 @@ Con todo esto, dejar constancia de nuestros elogios para todos aquellos astróno
 
 Con el objetivo de que el lector pueda conocer los datos que se han utilizado para ejecutar los códigos, se ha preparado un archivo principal en MATLAB para que, de forma interactiva, se puedan ejecutar los códigos que se han desarrollado para el proyecto.\\
 
-Así mismo, dicho códigos estarán disponibles en el repositorio de GitHub que hemos preparado con ese fin y que está disponible en el siguiente enlace:
+Así mismo, dichos códigos estarán disponibles en el repositorio de GitHub que hemos preparado con ese fin y que está disponible en el siguiente enlace:
 
 \begin{center}
     \href{https://github.com/Nacho-88/Determinacion_de_orbitas}{\textbf{Repositorio GitHub}}
 \end{center}
 
+\newpage
 \section{Anexo I. Herramientas software.}
 
 La primera es \href{https://www.tutiempo.net/astronomia/visor-astronomico/sistema-solar/}{\textbf{Posición Planetas}}
@@ -1005,12 +1024,26 @@ y como decíamos anteriormente, es un recurso muy potente. La herramienta web fu
 Esto nos ha servido muchísimo en el desarrollo de este proyecto pues hemos podido obtener las efemérides para nuestros escenarios de una forma precisa y relativamente sencilla, por lo que merecía su espacio en este guión.
 
 
-\section{Bibliografía}
+\addcontentsline{toc}{section}{9. Referencias}
+\begin{thebibliography}{99}
 
-https://www.tutiempo.net/astronomia/visor-astronomico/sistema-solar/
+\bibitem{curtis2005orbital}
+Howard D. Curtis,
+\textit{Orbital Mechanics for Engineering Students},
+2nd ed., Butterworth-Heinemann, 2005, ISBN: 978-0750662215.
 
-https://ssd.jpl.nasa.gov/horizons/app.html#/
+\bibitem{jpl_horizons}
+NASA Jet Propulsion Laboratory,
+``Horizons System,'' 2025. [Online]. Available: \url{https://ssd.jpl.nasa.gov/horizons/app.html#/}. 
 
-curtis
+\bibitem{tutiempo_solar}
+TuTiempo.net,
+``Visor Astronómico: Sistema Solar,'' 2025. [Online]. Available: \url{https://www.tutiempo.net/astronomia/visor-astronomico/sistema-solar/}.
+
+\bibitem{wikipedia_asc_recta}
+Wikipedia,
+``Ascensión recta,'' 2025. [Online]. Available: \url{https://es.wikipedia.org/wiki/Ascensi%C3%B3n_recta}.
+
+\end{thebibliography}
 
 \end{document}

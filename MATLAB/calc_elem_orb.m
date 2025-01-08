@@ -12,7 +12,7 @@ H=cross(R,V);
 
 h=norm(H);
 
-fprintf('\nEl valor del momento angular específico es de %.2e km^2 kg/s\n',h)
+fprintf('\nEl valor del momento angular específico es de %.2e km^2/s\n',h)
 
 i=acos(H(3)/h);
 
@@ -75,7 +75,7 @@ fprintf('Radio del periastro = %g km\n', h^2/mu/(1 + e))
 
 if e < 1
 
-    T = 2*pi/sqrt(mu)*a^1.5;
+    T = 2*pi*sqrt(a^3/mu);
     fprintf('Periodo:')
     fprintf('\nSegundos = %g', T)
     fprintf('\nMinutos = %g', T/60)
